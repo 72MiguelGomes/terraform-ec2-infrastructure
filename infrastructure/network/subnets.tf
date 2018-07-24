@@ -67,4 +67,35 @@ resource "aws_subnet" "dmz_c" {
 }
 
 # Public Subnet (Have direct acess to the internet, ALBs)
+resource "aws_subnet" "public_a" {
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "10.0.7.0/24"
+  availability_zone = "${data.aws_region.current.name}a"
 
+  tags {
+    Name      = "${var.environment} Public Subnet A"
+    Terraform = "true"
+  }
+}
+
+resource "aws_subnet" "public_b" {
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "10.0.8.0/24"
+  availability_zone = "${data.aws_region.current.name}b"
+
+  tags {
+    Name      = "${var.environment} Public Subnet B"
+    Terraform = "true"
+  }
+}
+
+resource "aws_subnet" "public_c" {
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "10.0.9.0/24"
+  availability_zone = "${data.aws_region.current.name}c"
+
+  tags {
+    Name      = "${var.environment} Public Subnet C"
+    Terraform = "true"
+  }
+}
